@@ -1,5 +1,9 @@
+import {PolyScene} from 'polygonjs-engine/src/engine/scene/PolyScene';
+import {ExtendedGeoObjNode} from '../../../../src/engine/nodes/obj/ExtendedGeo';
+
 QUnit.test('occlusion simple', async (assert) => {
-	const geo1 = window.geo1;
+	const scene = new PolyScene();
+	const geo1 = scene.root.createNode('geo') as ExtendedGeoObjNode;
 
 	const box1 = geo1.createNode('box');
 	const box2 = geo1.createNode('box');

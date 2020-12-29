@@ -1,7 +1,6 @@
 const argv = require('yargs').argv;
 const FAST_COMPILE = argv.env.FAST_COMPILE || false;
 const path = require('path');
-const LOGO_PATH = path.resolve(__dirname, '../../public/images/logo.256.png');
 const MINIFY = true;
 
 const fs = require('fs');
@@ -9,7 +8,6 @@ const {merge} = require('webpack-merge');
 const common = require('./common.js');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 var {AggressiveMergingPlugin} = require('webpack').optimize;
 
 const OCCLUSION_VERSION = JSON.stringify(require('../../package.json').version);
@@ -20,7 +18,6 @@ module.exports = (env) => {
 	// common_options.plugins.push(new UglifyJsWebpackPlugin()); //minify everything // no need, terser (below is better)
 	if (MINIFY) {
 		common_options.plugins.push(new AggressiveMergingPlugin()); //Merge chunks
-		common_options.plugins.push(new FaviconsWebpackPlugin(LOGO_PATH));
 		common_options.plugins.push(
 			new CompressionPlugin({
 				test: /\.(js)$/,

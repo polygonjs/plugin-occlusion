@@ -16,7 +16,7 @@ import {CoreGroup} from 'polygonjs-engine/src/core/geometry/Group';
 import {NodeParamsConfig, ParamConfig} from 'polygonjs-engine/src/engine/nodes/utils/params/ParamsConfig';
 class OcclusionSopParamsConfig extends NodeParamsConfig {
 	/** @param name of the occlusion attribute */
-	attrib_name = ParamConfig.STRING('occlusion');
+	attribName = ParamConfig.STRING('occlusion');
 	/** @param number of samples. The more samples the better the result, but the longer the calculation */
 	samples = ParamConfig.INTEGER(256, {
 		range: [1, 256],
@@ -24,7 +24,7 @@ class OcclusionSopParamsConfig extends NodeParamsConfig {
 	});
 	sep = ParamConfig.SEPARATOR();
 	/** @param size of buffer used in the calculation */
-	buffer_resolution = ParamConfig.INTEGER(512);
+	bufferResolution = ParamConfig.INTEGER(512);
 	/** @param you may want to tweak this value if you see light bleeding through the object */
 	bias = ParamConfig.FLOAT(0.01);
 }
@@ -39,7 +39,6 @@ export class OcclusionSopNode extends TypedSopNode<OcclusionSopParamsConfig> {
 	initialize_node() {
 		this.io.inputs.set_count(1);
 		this.io.inputs.init_inputs_cloned_state(InputCloneMode.FROM_NODE);
-		// this.uiData.set_icon('palette');
 	}
 
 	async cook(input_contents: CoreGroup[]) {
@@ -65,7 +64,7 @@ export class OcclusionSopNode extends TypedSopNode<OcclusionSopParamsConfig> {
 		const aoSampler = geoao(position_array, {
 			cells: index_array,
 			normals: normal_array,
-			resolution: this.pv.buffer_resolution,
+			resolution: this.pv.bufferResolution,
 			bias: this.pv.bias,
 		});
 
@@ -74,7 +73,7 @@ export class OcclusionSopNode extends TypedSopNode<OcclusionSopParamsConfig> {
 		}
 		const ao = aoSampler.report();
 
-		geometry.setAttribute(this.pv.attrib_name, new Float32BufferAttribute(ao, 1));
+		geometry.setAttribute(this.pv.attribName, new Float32BufferAttribute(ao, 1));
 
 		aoSampler.dispose();
 	}
