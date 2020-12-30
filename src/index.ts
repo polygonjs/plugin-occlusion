@@ -4,7 +4,9 @@ import {CATEGORY_SOP} from 'polygonjs-engine/src/engine/poly/registers/nodes/Cat
 import {ExtendedGeoNodeChildrenMap} from './ExtendedGeoNodeChildrenMap';
 export {ExtendedGeoNodeChildrenMap};
 
+import {OcclusionSopOperation} from './core/operations/sop/Occlusion';
 import {OcclusionSopNode} from './engine/nodes/sop/Occlusion';
-export function PolygonjsPluginOcclusionRegister(poly: Poly) {
+export function PolygonjsPluginOcclusion(poly: Poly) {
+	poly.registerOperation(OcclusionSopOperation);
 	poly.registerNode(OcclusionSopNode, CATEGORY_SOP.RENDER);
 }

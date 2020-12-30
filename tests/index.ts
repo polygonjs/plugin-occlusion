@@ -1,8 +1,8 @@
 import {AllRegister} from 'polygonjs-engine/src/engine/poly/registers/All';
 AllRegister.run();
-import {PolygonjsPluginOcclusionRegister} from '../src/index';
+import {PolygonjsPluginOcclusion} from '../src/index';
 import {Poly} from 'polygonjs-engine/src/engine/Poly';
-PolygonjsPluginOcclusionRegister(Poly.instance());
+Poly.instance().pluginsRegister.register('polygonjs-plugin-occlusion', PolygonjsPluginOcclusion);
 
 import './helpers/setup';
 import './tests';
