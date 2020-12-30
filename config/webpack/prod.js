@@ -10,7 +10,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 var {AggressiveMergingPlugin} = require('webpack').optimize;
 
-const OCCLUSION_VERSION = JSON.stringify(require('../../package.json').version);
+const PLUGIN_VERSION = JSON.stringify(require('../../package.json').version);
 
 module.exports = (env) => {
 	const common_options = common(env);
@@ -38,10 +38,11 @@ module.exports = (env) => {
 	// currently not using contenthash since we will fetch the generated file with a version anyway
 	// ie: https://unpkg.com/polygonjs-engine@1.1.23/dist/polygonjs-engine.js
 	common_options.output.chunkFilename = '[name].js'; //'[name].[contenthash].js';
-	common_options.output.publicPath = `https://unpkg.com/polygonjs-plugin-occlusion@${OCCLUSION_VERSION}/dist/`; // a default is needed
+	common_options.output.publicPath = `https://unpkg.com/polygonjs-plugin-occlusion@${PLUGIN_VERSION}/dist/`; // a default is needed
 	if (env.PUBLIC_PATH) {
 		common_options.output.publicPath = env.PUBLIC_PATH; // this may be crucial to update depending on the build
 	}
+	common_options.output.libraryTarget = 'commonjs2';
 
 	const config = merge(common_options, {
 		mode: 'production',

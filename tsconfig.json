@@ -21,7 +21,7 @@
 		"allowJs": true,
 		"sourceMap": true,
 
-		"declaration": true, // be careful as this makes many classes invalid, such as the ones in gl/_ConversionVecTo.ts
+		"declaration": true,
 		// "declarationDir": "./dist/types", // declarationDir cannot be set if declaration is false
 
 		"importHelpers": true,

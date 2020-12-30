@@ -48,9 +48,9 @@ module.exports = (env = {}) => {
 			fs: 'empty', // to attempt bundling ammo-typed without error in prod
 		},
 		plugins: plugins,
-		externals: {
-			'polygonjs-engine': 'polygonjs-engine',
-		},
+		// externals: {
+		// 	'polygonjs-engine': 'polygonjs-engine',
+		// },
 		output: {
 			// library: 'POLY',
 			// libraryTarget: 'umd',
@@ -68,7 +68,7 @@ module.exports = (env = {}) => {
 			// library: ["POLY", "[name]"],
 			// libraryTarget: "umd"
 
-			libraryTarget: 'commonjs2',
+			// libraryTarget: 'commonjs2', // this is set in prod
 			// globalObject: 'this',
 			// libraryExport: 'default',
 			library: 'PolyPluginOcclusion',
