@@ -6,7 +6,11 @@ export {ExtendedGeoNodeChildrenMap};
 
 import {OcclusionSopOperation} from './core/operations/sop/Occlusion';
 import {OcclusionSopNode} from './engine/nodes/sop/Occlusion';
-export function PolygonjsPluginOcclusion(poly: Poly) {
+import {PolyPlugin} from 'polygonjs-engine/src/engine/poly/registers/plugins/Plugin';
+function PolygonjsPluginOcclusion(poly: Poly) {
 	poly.registerOperation(OcclusionSopOperation);
 	poly.registerNode(OcclusionSopNode, CATEGORY_SOP.RENDER);
 }
+export const polyPluginOcclusion = new PolyPlugin('occlusion', PolygonjsPluginOcclusion, {
+	libraryName: 'polygonjs-plugin-occlusion',
+});

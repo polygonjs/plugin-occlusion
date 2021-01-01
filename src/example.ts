@@ -6,8 +6,8 @@ import {ExtendedGeoObjNode} from './engine/nodes/obj/ExtendedGeo';
 import {AllRegister} from 'polygonjs-engine/src/engine/poly/registers/All';
 AllRegister.run();
 // register nodes for this plugin
-import {PolygonjsPluginOcclusion} from './index';
-Poly.instance().pluginsRegister.register('polygonjs-plugin-occlusion', PolygonjsPluginOcclusion);
+import {polyPluginOcclusion} from './index';
+Poly.instance().registerPlugin(polyPluginOcclusion);
 
 // create a scene
 const scene = new PolyScene();
