@@ -28,7 +28,7 @@ export class OcclusionSopOperation extends BaseSopOperation {
 	}
 	cook(input_contents: CoreGroup[], params: OcclusionSopParams) {
 		const core_group = input_contents[0];
-		const core_objects = core_group.core_objects();
+		const core_objects = core_group.coreObjects();
 
 		for (let core_object of core_objects) {
 			this._process_occlusion_on_object(core_object, params);
@@ -38,7 +38,7 @@ export class OcclusionSopOperation extends BaseSopOperation {
 	}
 
 	private _process_occlusion_on_object(core_object: CoreObject, params: OcclusionSopParams) {
-		const geometry = core_object.core_geometry()?.geometry();
+		const geometry = core_object.coreGeometry()?.geometry();
 		if (!geometry) {
 			return;
 		}

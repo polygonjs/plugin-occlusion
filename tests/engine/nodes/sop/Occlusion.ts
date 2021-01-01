@@ -19,9 +19,9 @@ QUnit.test('occlusion simple', async (assert) => {
 	occlusion1.setInput(0, merge1);
 
 	let container;
-	container = await occlusion1.request_container();
-	let core_group = container.core_content()!;
-	let {geometry} = core_group.objects_with_geo()[0];
+	container = await occlusion1.requestContainer();
+	let core_group = container.coreContent()!;
+	let {geometry} = core_group.objectsWithGeo()[0];
 
 	const occlusion_array = geometry.getAttribute('occlusion').array;
 
