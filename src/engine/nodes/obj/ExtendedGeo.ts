@@ -1,3 +1,4 @@
+import {Constructor, valueof} from 'polygonjs-engine/src/types/GlobalTypes';
 import {GeoObjNode} from 'polygonjs-engine/src/engine/nodes/obj/Geo';
 import {ExtendedGeoNodeChildrenMap} from '../../../ExtendedGeoNodeChildrenMap';
 import {ParamsInitData} from 'polygonjs-engine/src/engine/nodes/utils/io/IOController';
