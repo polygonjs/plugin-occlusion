@@ -20,7 +20,7 @@ const merge = geo.createNode('merge');
 merge.setInput(0, sphere);
 merge.setInput(1, plane);
 plane.p.size.set([4, 4]);
-plane.p.step_size.set(0.02);
+plane.p.stepSize.set(0.02);
 plane.p.center.y.set(-1);
 
 // add occlusion
