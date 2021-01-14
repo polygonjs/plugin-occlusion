@@ -7,13 +7,13 @@ import {AllRegister} from 'polygonjs-engine/src/engine/poly/registers/All';
 AllRegister.run();
 // register nodes for this plugin
 import {polyPluginOcclusion} from './index';
-Poly.instance().registerPlugin(polyPluginOcclusion);
+Poly.registerPlugin(polyPluginOcclusion);
 
 // create a scene
 const scene = new PolyScene();
 
 // create a sphere and plane
-const geo = scene.root.createNode('geo') as ExtendedGeoObjNode;
+const geo = scene.root().createNode('geo') as ExtendedGeoObjNode;
 const sphere = geo.createNode('sphere');
 const plane = geo.createNode('plane');
 const merge = geo.createNode('merge');
@@ -31,7 +31,7 @@ occlusion.setInput(0, merge);
 const material = geo.createNode('material');
 material.setInput(0, occlusion);
 material.flags.display.set(true);
-const MAT = scene.root.createNode('materials');
+const MAT = scene.root().createNode('materials');
 const meshBasicBuilder = MAT.createNode('meshBasicBuilder');
 const output = meshBasicBuilder.createNode('output');
 const attribute = meshBasicBuilder.createNode('attribute');
@@ -46,10 +46,10 @@ attribute.p.name.set('occlusion');
 material.p.material.setNode(meshBasicBuilder);
 
 // add a light
-scene.root.createNode('hemisphereLight');
+scene.root().createNode('hemisphereLight');
 
 // create a camera
-const perspectiveCamera1 = scene.root.createNode('perspectiveCamera');
+const perspectiveCamera1 = scene.root().createNode('perspectiveCamera');
 perspectiveCamera1.p.t.set([5, 5, 5]);
 // add orbit_controls
 const events1 = perspectiveCamera1.createNode('events');
