@@ -59,5 +59,5 @@ perspectiveCamera1.p.controls.setNode(orbitsControls);
 // create viewer
 perspectiveCamera1.createViewer(document.getElementById('app')!);
 
-// make some noes globals to access in html controls
+// make some nodes globals to access in html controls
 (window as any).sphere = sphere;
