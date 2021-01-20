@@ -33,9 +33,9 @@ export class OcclusionSopNode extends TypedSopNode<OcclusionSopParamsConfig> {
 		return 'occlusion';
 	}
 
-	initialize_node() {
-		this.io.inputs.set_count(1);
-		this.io.inputs.init_inputs_cloned_state(OcclusionSopOperation.INPUT_CLONED_STATE);
+	initializeNode() {
+		this.io.inputs.setCount(1);
+		this.io.inputs.initInputsClonedState(OcclusionSopOperation.INPUT_CLONED_STATE);
 	}
 
 	private _operation: OcclusionSopOperation | undefined;
