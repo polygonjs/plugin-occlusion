@@ -28,6 +28,6 @@
 		"lib": ["dom", "es2019.array"]
 		// "typeRoots": []
 	},
-	// "include": ["./**/*.ts", "./**/*.vue"],
+	"include": ["./src/**/*.ts", "./tests/**/*.ts", "node_modules/@polygonjs/engine/**/*"],
 	"exclude": ["node_modules", "modules", "dist", "public", "webpack"]
 }
