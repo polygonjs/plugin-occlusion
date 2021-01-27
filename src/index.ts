@@ -12,5 +12,5 @@ function PolygonjsPluginOcclusion(poly: PolyEngine) {
 	poly.registerNode(OcclusionSopNode, CATEGORY_SOP.RENDER);
 }
 export const polyPluginOcclusion = new PolyPlugin('occlusion', PolygonjsPluginOcclusion, {
-	libraryName: 'polygonjs-plugin-occlusion',
+	libraryName: '@polygonjs/plugin-occlusion',
 });
