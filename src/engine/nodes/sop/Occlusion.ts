@@ -5,10 +5,10 @@
  * This is using [https://github.com/wwwtyro/geo-ambient-occlusion](https://github.com/wwwtyro/geo-ambient-occlusion)
  *
  */
-import {TypedSopNode} from '@polygonjs/engine/src/engine/nodes/sop/_Base';
-import {CoreGroup} from '@polygonjs/engine/src/core/geometry/Group';
+import {TypedSopNode} from '@polygonjs/polygonjs/dist/src/engine/nodes/sop/_Base';
+import {CoreGroup} from '@polygonjs/polygonjs/dist/src/core/geometry/Group';
 import {OcclusionSopOperation} from '../../../core/operations/sop/Occlusion';
-import {NodeParamsConfig, ParamConfig} from '@polygonjs/engine/src/engine/nodes/utils/params/ParamsConfig';
+import {NodeParamsConfig, ParamConfig} from '@polygonjs/polygonjs/dist/src/engine/nodes/utils/params/ParamsConfig';
 
 const DEFAULT = OcclusionSopOperation.DEFAULT_PARAMS;
 class OcclusionSopParamsConfig extends NodeParamsConfig {

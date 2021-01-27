@@ -7,7 +7,7 @@
 	},
 	"description": "Occlusion plugin for the 3D engine https://polygonjs.com",
 	"repository": {
-		"url": "git@github.com:polygonjs/polygonjs-plugin-occlusion.git",
+		"url": "git@github.com:polygonjs/plugin-occlusion.git",
 		"type": "git"
 	},
 	"keywords": [
@@ -21,7 +21,7 @@
 	],
 	"author": "Guillaume Fradin <gui@polygonjs.com>",
 	"license": "MIT",
-	"main": "./dist/polygonjs-plugin-occlusion.js",
+	"main": "./dist/index.js",
 	"scripts": {
 		"start": "webpack-dev-server --env.NODE_ENV=development --env.production=false --config config/webpack/dev.js",
 		"build": "export NODE_OPTIONS='--max-old-space-size=32768' yarn build_folder_delete && yarn build_with_webpack && yarn build_with_esbuild && yarn build_folder_remove_unneeded && yarn cp_types",
@@ -43,10 +43,13 @@
 		"geo-ambient-occlusion": "3.0.4"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.12.10",
+		"@babel/preset-env": "^7.12.11",
 		"@types/lodash": "4.14.166",
 		"@types/qunit": "2.11.1",
 		"@typescript-eslint/eslint-plugin": "4.7.0",
 		"@typescript-eslint/parser": "4.7.0",
+		"babel-loader": "^8.2.2",
 		"clean-webpack-plugin": "3.0.0",
 		"compression-webpack-plugin": "6.1.0",
 		"esbuild": "0.8.21",

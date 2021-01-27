@@ -1,24 +1,25 @@
 # Polygonjs Occlusion Plugin
 
-This adds an Occlusion SOP node to the Polygonjs webgl engine.
+This adds a Occlusion SOP node to the [Polygonjs webgl engine](https://polygonjs.com).
 
 This wraps the work done in https://github.com/wwwtyro/geo-ambient-occlusion into a node that can be used with all the other nodes available on Polygonjs.
 
-# run for development
+See [example scene](https://github.com/polygonjs/example-plugin-occlusion):
 
-Ensure you have `node` and `yarn` installed, then run the following in the root folder of the repository:
+![geometries with occlusion added](https://github.com/polygonjs/example-plugin-occlusion/blob/master/doc/occlusions_examples.jpg?raw=true)
 
--   run `yarn`
--   run `npm start`
--   open `http://localhost:8080/example`
+# Install
 
-# testing
+Import the plugin:
 
--   run `yarn`
--   run `npm start`
--   open `http://localhost:8080/test`
+`yarn add @polygonjs/plugin-occlusion`
 
-# build
+And register the plugin in the function `configurePolygonjs` in the file `PolyConfig.js` so that the palette node can be accessible in both the editor and your exported scene:
 
--   run `yarn`
--   run `npm run build`
+```js
+import {polyPluginOcclusion} from '@polygonjs/plugin-palette/dist/src/index';
+
+export function configurePolygonjs(poly) {
+	poly.registerPlugin(polyPluginOcclusion);
+}
+```

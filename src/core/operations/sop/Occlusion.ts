@@ -1,12 +1,12 @@
-import {BaseSopOperation} from '@polygonjs/engine/src/core/operations/sop/_Base';
-import {DefaultOperationParams} from '@polygonjs/engine/src/core/operations/_Base';
-import {CoreGroup} from '@polygonjs/engine/src/core/geometry/Group';
-import {InputCloneMode} from '@polygonjs/engine/src/engine/poly/InputCloneMode';
+import {BaseSopOperation} from '@polygonjs/polygonjs/dist/src/core/operations/sop/_Base';
+import {DefaultOperationParams} from '@polygonjs/polygonjs/dist/src/core/operations/_Base';
+import {CoreGroup} from '@polygonjs/polygonjs/dist/src/core/geometry/Group';
+import {InputCloneMode} from '@polygonjs/polygonjs/dist/src/engine/poly/InputCloneMode';
 
 import './geo-ambient-occlusion';
 import geoao from 'geo-ambient-occlusion';
 import {Float32BufferAttribute} from 'three/src/core/BufferAttribute';
-import {CoreObject} from '@polygonjs/engine/src/core/geometry/Object';
+import {CoreObject} from '@polygonjs/polygonjs/dist/src/core/geometry/Object';
 
 interface OcclusionSopParams extends DefaultOperationParams {
 	attribName: string;
