@@ -6,7 +6,7 @@ This wraps the work done in https://github.com/wwwtyro/geo-ambient-occlusion int
 
 See [example scene](https://github.com/polygonjs/example-plugin-occlusion):
 
-![geometries with occlusion added](https://github.com/polygonjs/example-plugin-occlusion/blob/master/doc/occlusions_examples.jpg?raw=true)
+![geometries with occlusion added](https://github.com/polygonjs/example-plugin-occlusion/blob/main/doc/occlusion_examples.jpg?raw=true)
 
 # Install
 
