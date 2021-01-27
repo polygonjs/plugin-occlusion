@@ -1,9 +1,6 @@
 import {PolyEngine} from '@polygonjs/polygonjs/dist/src/engine/Poly';
 import {CATEGORY_SOP} from '@polygonjs/polygonjs/dist/src/engine/poly/registers/nodes/Category';
 
-import {ExtendedGeoNodeChildrenMap} from './ExtendedGeoNodeChildrenMap';
-export {ExtendedGeoNodeChildrenMap};
-
 import {OcclusionSopOperation} from './core/operations/sop/Occlusion';
 import {OcclusionSopNode} from './engine/nodes/sop/Occlusion';
 import {PolyPlugin} from '@polygonjs/polygonjs/dist/src/engine/poly/registers/plugins/Plugin';
