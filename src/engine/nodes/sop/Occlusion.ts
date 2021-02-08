@@ -7,7 +7,7 @@
  */
 import {TypedSopNode} from '@polygonjs/polygonjs/dist/src/engine/nodes/sop/_Base';
 import {CoreGroup} from '@polygonjs/polygonjs/dist/src/core/geometry/Group';
-import {OcclusionSopOperation} from '../../../core/operations/sop/Occlusion';
+import {OcclusionSopOperation} from '../../operations/sop/Occlusion';
 import {NodeParamsConfig, ParamConfig} from '@polygonjs/polygonjs/dist/src/engine/nodes/utils/params/ParamsConfig';
 
 const DEFAULT = OcclusionSopOperation.DEFAULT_PARAMS;
