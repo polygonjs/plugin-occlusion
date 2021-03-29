@@ -16,6 +16,7 @@ QUnit.test('occlusion simple', async (assert) => {
 
 	merge1.setInput(0, box1);
 	merge1.setInput(1, box2);
+	merge1.p.compact.set(true);
 	occlusion1.setInput(0, merge1);
 
 	let container;

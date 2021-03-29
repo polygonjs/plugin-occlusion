@@ -19,6 +19,7 @@ const plane = geo.createNode('plane');
 const merge = geo.createNode('merge');
 merge.setInput(0, sphere);
 merge.setInput(1, plane);
+merge.p.compact.set(true);
 plane.p.size.set([4, 4]);
 plane.p.stepSize.set(0.02);
 plane.p.center.y.set(-1);
@@ -61,3 +62,4 @@ perspectiveCamera1.createViewer(document.getElementById('app')!);
 
 // make some nodes globals to access in html controls
 (window as any).sphere = sphere;
+(window as any).occlusion = occlusion;

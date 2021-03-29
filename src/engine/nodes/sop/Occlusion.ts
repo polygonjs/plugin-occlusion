@@ -18,8 +18,8 @@ class OcclusionSopParamsConfig extends NodeParamsConfig {
 	samples = ParamConfig.INTEGER(DEFAULT.samples, {
 		range: [1, 256],
 		rangeLocked: [true, false],
+		separatorAfter: true,
 	});
-	sep = ParamConfig.SEPARATOR();
 	/** @param size of buffer used in the calculation */
 	bufferResolution = ParamConfig.INTEGER(DEFAULT.bufferResolution);
 	/** @param you may want to tweak this value if you see light bleeding through the object */
@@ -28,7 +28,7 @@ class OcclusionSopParamsConfig extends NodeParamsConfig {
 const ParamsConfig = new OcclusionSopParamsConfig();
 
 export class OcclusionSopNode extends TypedSopNode<OcclusionSopParamsConfig> {
-	params_config = ParamsConfig;
+	paramsConfig = ParamsConfig;
 	static type() {
 		return 'occlusion';
 	}
