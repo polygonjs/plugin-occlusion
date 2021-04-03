@@ -32,7 +32,7 @@ occlusion.setInput(0, merge);
 const material = geo.createNode('material');
 material.setInput(0, occlusion);
 material.flags.display.set(true);
-const MAT = scene.root().createNode('materials');
+const MAT = scene.root().createNode('materialsNetwork');
 const meshBasicBuilder = MAT.createNode('meshBasicBuilder');
 const output = meshBasicBuilder.createNode('output');
 const attribute = meshBasicBuilder.createNode('attribute');
@@ -53,7 +53,7 @@ scene.root().createNode('hemisphereLight');
 const perspectiveCamera1 = scene.root().createNode('perspectiveCamera');
 perspectiveCamera1.p.t.set([5, 5, 5]);
 // add orbit_controls
-const events1 = perspectiveCamera1.createNode('events');
+const events1 = perspectiveCamera1.createNode('eventsNetwork');
 const orbitsControls = events1.createNode('cameraOrbitControls');
 perspectiveCamera1.p.controls.setNode(orbitsControls);
 
