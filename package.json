@@ -39,7 +39,7 @@
 		"cp_types": "cp dist/src/index.d.ts dist/"
 	},
 	"dependencies": {
-		"@polygonjs/polygonjs": "^1.1.127",
+		"@polygonjs/polygonjs": "^1.1.149",
 		"geo-ambient-occlusion": "3.0.4"
 	},
 	"devDependencies": {
