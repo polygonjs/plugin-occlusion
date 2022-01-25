@@ -1,5 +1,5 @@
 import {BaseSopOperation} from '@polygonjs/polygonjs/dist/src/engine/operations/sop/_Base';
-import {DefaultOperationParams} from '@polygonjs/polygonjs/dist/src/engine/operations/_Base';
+import {DefaultOperationParams} from '@polygonjs/polygonjs/dist/src/core/operations/_Base';
 import {CoreGroup} from '@polygonjs/polygonjs/dist/src/core/geometry/Group';
 import {InputCloneMode} from '@polygonjs/polygonjs/dist/src/engine/poly/InputCloneMode';
 
@@ -16,17 +16,17 @@ interface OcclusionSopParams extends DefaultOperationParams {
 }
 
 export class OcclusionSopOperation extends BaseSopOperation {
-	static readonly DEFAULT_PARAMS: OcclusionSopParams = {
+	static override readonly DEFAULT_PARAMS: OcclusionSopParams = {
 		attribName: 'occlusion',
 		samples: 256,
 		bufferResolution: 512,
 		bias: 0.01,
 	};
-	static readonly INPUT_CLONED_STATE = InputCloneMode.FROM_NODE;
-	static type(): Readonly<'occlusion'> {
+	static override readonly INPUT_CLONED_STATE = InputCloneMode.FROM_NODE;
+	static override type(): Readonly<'occlusion'> {
 		return 'occlusion';
 	}
-	cook(input_contents: CoreGroup[], params: OcclusionSopParams) {
+	override cook(input_contents: CoreGroup[], params: OcclusionSopParams) {
 		const core_group = input_contents[0];
 		const core_objects = core_group.coreObjects();
 
