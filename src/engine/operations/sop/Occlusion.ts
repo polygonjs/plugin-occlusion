@@ -5,7 +5,7 @@ import {InputCloneMode} from '@polygonjs/polygonjs/dist/src/engine/poly/InputClo
 
 import './geo-ambient-occlusion';
 import geoao from 'geo-ambient-occlusion';
-import {Float32BufferAttribute} from 'three/src/core/BufferAttribute';
+import {Float32BufferAttribute} from 'three';
 import {CoreObject} from '@polygonjs/polygonjs/dist/src/core/geometry/Object';
 
 interface OcclusionSopParams extends DefaultOperationParams {
