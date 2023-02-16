@@ -16,14 +16,21 @@ class OcclusionSopParamsConfig extends NodeParamsConfig {
 	attribName = ParamConfig.STRING(DEFAULT.attribName);
 	/** @param number of samples. The more samples the better the result, but the longer the calculation */
 	samples = ParamConfig.INTEGER(DEFAULT.samples, {
-		range: [1, 256],
+		range: [1, 1024],
 		rangeLocked: [true, false],
 		separatorAfter: true,
 	});
 	/** @param size of buffer used in the calculation */
-	bufferResolution = ParamConfig.INTEGER(DEFAULT.bufferResolution);
+	bufferResolution = ParamConfig.INTEGER(DEFAULT.bufferResolution, {
+		range: [1, 2048],
+		rangeLocked: [true, false],
+	});
 	/** @param you may want to tweak this value if you see light bleeding through the object */
-	bias = ParamConfig.FLOAT(DEFAULT.bias);
+	bias = ParamConfig.FLOAT(DEFAULT.bias, {
+		range: [0, 0.1],
+		rangeLocked: [true, false],
+		step: 0.001,
+	});
 }
 const ParamsConfig = new OcclusionSopParamsConfig();
 
