@@ -17,8 +17,7 @@ Import the plugin:
 And register the plugin in the function `configurePolygonjs` in the file `PolyConfig.js` so that the occlusion node can be accessible in both the editor and your exported scene:
 
 ```js
-// @ts-ignore
-import {polyPluginOcclusion} from '@polygonjs/plugin-occlusion/dist/plugin-occlusion.mjs';
+import {polyPluginOcclusion} from '@polygonjs/plugin-occlusion';
 
 export function configurePolygonjs(poly) {
 	poly.registerPlugin(polyPluginOcclusion);
