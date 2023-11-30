@@ -10,6 +10,6 @@ function PolygonjsPluginOcclusion(poly: PolyEngine) {
 }
 const polyPluginOcclusion = new PolyPlugin('occlusion', PolygonjsPluginOcclusion, {
 	libraryName: '@polygonjs/plugin-occlusion',
-	libraryImportPath: '@polygonjs/plugin-occlusion/dist',
+	libraryImportPath: '@polygonjs/plugin-occlusion/dist/plugin-occlusion.mjs',
 });
 export {polyPluginOcclusion, OcclusionSopNode};
