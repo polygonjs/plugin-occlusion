@@ -6,7 +6,10 @@ export default defineConfig({
 	build: {
 		lib: {
 			entry: path.resolve(__dirname, 'src/index.ts'),
-			name: '@polygonjs/plugin-occlusion',
+			name: 'polygonjs-occlusion',
+		},
+		rollupOptions: {
+			external: ['@polygonjs/polygonjs', 'three'],
 		},
 	},
 });

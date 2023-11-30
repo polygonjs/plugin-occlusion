@@ -6,6 +6,17 @@
 		"yarn": ">=1.22.15"
 	},
 	"type": "module",
+	"files": [
+		"dist"
+	],
+	"main": "./dist/polygonjs-occlusion.umd.cjs",
+	"module": "./dist/polygonjs-occlusion.js",
+	"exports": {
+		".": {
+			"import": "./dist/polygonjs-occlusion.js",
+			"require": "./dist/polygonjs-occlusion.umd.cjs"
+		}
+	},
 	"description": "Occlusion plugin for the 3D engine https://polygonjs.com",
 	"repository": {
 		"url": "git@github.com:polygonjs/plugin-occlusion.git",
@@ -22,7 +33,6 @@
 	],
 	"author": "Guillaume Fradin <gui@polygonjs.com>",
 	"license": "MIT",
-	"main": "./dist/index.js",
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
