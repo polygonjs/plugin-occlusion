@@ -1,10 +1,11 @@
 {
 	"name": "@polygonjs/plugin-occlusion",
-	"version": "1.3.9",
+	"version": "1.5.38",
 	"engines": {
 		"node": ">=12.16.1",
 		"yarn": ">=1.22.4"
 	},
+	"type": "module",
 	"description": "Occlusion plugin for the 3D engine https://polygonjs.com",
 	"repository": {
 		"url": "git@github.com:polygonjs/plugin-occlusion.git",
@@ -23,46 +24,20 @@
 	"license": "MIT",
 	"main": "./dist/index.js",
 	"scripts": {
-		"start": "webpack-dev-server --env.NODE_ENV=development --env.production=false --config config/webpack/dev.js",
-		"build": "export NODE_OPTIONS='--max-old-space-size=32768' yarn build_folder_delete && yarn build_with_webpack && yarn build_with_esbuild && yarn build_folder_remove_unneeded && yarn cp_types",
-		"build_with_webpack": "webpack --env.NODE_ENV=production --env.production --progress --config config/webpack/prod.js",
-		"build_with_webpack_fast": "webpack --env.NODE_ENV=production --env.production --progress --env.FAST_COMPILE=true --config config/webpack/prod.js",
-		"build_unpkg": "webpack --env.NODE_ENV=production --env.production --env.PUBLIC_PATH='./' --progress --config config/webpack/prod.js",
-		"build_verbose": "webpack --env.NODE_ENV=production --env.production --progress --display-reasons --display-used-exports --display-provided-exports --display-chunks --display-max-modules 99999 --display-origins --display-entrypoints --config config/webpack/prod.js",
-		"build_custom_paths_verbose": "webpack --env.NODE_ENV=production --env.production --env.PUBLIC_PATH=/packs-engine/ --env.DIST_PATH=../dist --progress --display-reasons --display-used-exports --display-provided-exports --display-chunks --display-max-modules 99999 --display-origins --display-entrypoints --config config/webpack/prod.js",
-		"analyze": "webpack --env.NODE_ENV=production --env.production --config config/webpack/prod.js --profile --json > config/webpack/stats.json && node_modules/.bin/webpack-bundle-analyzer config/webpack/stats.json",
-		"concat_dts": "./node_modules/typescript/bin/tsc --allowSyntheticDefaultImports --esModuleInterop --moduleResolution node config/webpack/dts_concat.ts; node config/webpack/dts_concat.js",
-		"tsc_esbuild": "./node_modules/typescript/bin/tsc config/esbuild/esbuild.ts --moduleResolution node",
-		"build_with_esbuild": "yarn tsc_esbuild && node config/esbuild/esbuild.js",
-		"build_folder_delete": "rm -rf dist/*",
-		"build_folder_remove_unneeded": "rm -rf dist/config && rm -rf dist/tests",
-		"cp_types": "cp dist/src/index.d.ts dist/"
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@polygonjs/polygonjs": "^1.3.9",
+		"@polygonjs/polygonjs": "^1.5.38",
 		"geo-ambient-occlusion": "3.0.4"
 	},
 	"devDependencies": {
-		"@types/qunit": "2.11.1",
-		"@typescript-eslint/eslint-plugin": "4.20.0",
-		"@typescript-eslint/parser": "4.20.0",
-		"clean-webpack-plugin": "3.0.0",
-		"compression-webpack-plugin": "6.1.0",
-		"esbuild": "0.14.13",
-		"eslint": "7.23.0",
-		"html-webpack-plugin": "4.5.0",
-		"prettier": "2.4.1",
-		"qunit": "2.17.2",
-		"terser-webpack-plugin": "4.2.2",
-		"ts-declaration-webpack-plugin": "1.2.3",
-		"ts-loader": "8.1.0",
-		"ts-shader-loader": "1.0.6",
-		"tslib": "2.3.1",
-		"typescript": "4.4.4",
-		"webpack": "4.44.2",
-		"webpack-bundle-analyzer": "3.9.0",
-		"webpack-cli": "3.3.12",
-		"webpack-dev-server": "3.11.0",
-		"webpack-merge": "5.1.4"
+		"@types/node": "^20.10.1",
+		"@typescript-eslint/eslint-plugin": "6.10.0",
+		"@typescript-eslint/parser": "6.10.0",
+		"prettier": "3.0.3",
+		"typescript": "^5.2.2",
+		"vite": "^5.0.0"
 	}
 }

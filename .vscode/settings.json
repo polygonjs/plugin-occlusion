@@ -57,6 +57,12 @@
 	"[typescript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
+	"[htmle]": {
+		"editor.defaultFormatter": "vscode.html-language-features"
+	},
+	"files.associations": {
+		"*.html.erb": "html"
+	},
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"sync.gist": "159116325979581e194933d4122b87f6",
 	"typescript.tsserver.maxTsServerMemory": 16384,

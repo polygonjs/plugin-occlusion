@@ -1,12 +1,11 @@
+import {Float32BufferAttribute} from 'three';
 import {BaseSopOperation} from '@polygonjs/polygonjs/dist/src/engine/operations/sop/_Base';
 import {DefaultOperationParams} from '@polygonjs/polygonjs/dist/src/core/operations/_Base';
-import {CoreGroup} from '@polygonjs/polygonjs/dist/src/core/geometry/Group';
+import {CoreGroup, Object3DWithGeometry} from '@polygonjs/polygonjs/dist/src/core/geometry/Group';
 import {InputCloneMode} from '@polygonjs/polygonjs/dist/src/engine/poly/InputCloneMode';
 
 import './geo-ambient-occlusion';
 import geoao from 'geo-ambient-occlusion';
-import {Float32BufferAttribute} from 'three';
-import {CoreObject} from '@polygonjs/polygonjs/dist/src/core/geometry/Object';
 
 interface OcclusionSopParams extends DefaultOperationParams {
 	attribName: string;
@@ -26,19 +25,19 @@ export class OcclusionSopOperation extends BaseSopOperation {
 	static override type(): Readonly<'occlusion'> {
 		return 'occlusion';
 	}
-	override cook(input_contents: CoreGroup[], params: OcclusionSopParams) {
-		const core_group = input_contents[0];
-		const core_objects = core_group.coreObjects();
+	override cook(inputCoreGroups: CoreGroup[], params: OcclusionSopParams) {
+		const coreGroup = inputCoreGroups[0];
+		const objects = coreGroup.threejsObjectsWithGeo();
 
-		for (let core_object of core_objects) {
-			this._process_occlusion_on_object(core_object, params);
+		for (const object of objects) {
+			this._processOcclusionOnObject(object, params);
 		}
 
-		return core_group;
+		return coreGroup;
 	}
 
-	private _process_occlusion_on_object(core_object: CoreObject, params: OcclusionSopParams) {
-		const geometry = core_object.coreGeometry()?.geometry();
+	private _processOcclusionOnObject(object: Object3DWithGeometry, params: OcclusionSopParams) {
+		const geometry = object.geometry
 		if (!geometry) {
 			return;
 		}

@@ -81,57 +81,80 @@ Poly.registerNode(TwoWaySwitchGlNode);
 import {polyPluginOcclusion} from './index';
 Poly.registerPlugin(polyPluginOcclusion);
 
-// create a scene
-const scene = new PolyScene();
+let _initialized = false;
+async function init() {
+	if (_initialized) {
+		return;
+	}
+	_initialized = true;
 
-// create a sphere and plane
-const geo = scene.root().createNode('geo') as ExtendedGeoObjNode;
-const sphere = geo.createNode('sphere');
-const plane = geo.createNode('plane');
-const merge = geo.createNode('merge');
-merge.setInput(0, sphere);
-merge.setInput(1, plane);
-merge.p.compact.set(true);
-plane.p.size.set([4, 4]);
-plane.p.stepSize.set(0.02);
-plane.p.center.y.set(-1);
+	// create a scene
+	const scene = new PolyScene();
 
-// add occlusion
-const occlusion = geo.createNode('occlusion');
-occlusion.setInput(0, merge);
+	// create a sphere and plane
+	const geo = scene.root().createNode('geo') as ExtendedGeoObjNode;
+	const sphere = geo.createNode('sphere');
+	const plane = geo.createNode('plane');
+	const merge = geo.createNode('merge');
+	merge.setInput(0, sphere);
+	merge.setInput(1, plane);
+	merge.p.compact.set(true);
+	plane.p.size.set([4, 4]);
+	plane.p.stepSize.set(0.02);
+	plane.p.center.y.set(-1);
 
-// add material
-const material = geo.createNode('material');
-material.setInput(0, occlusion);
-material.flags.display.set(true);
-const MAT = scene.root().createNode('materialsNetwork');
-const meshBasicBuilder = MAT.createNode('meshBasicBuilder');
-const output = meshBasicBuilder.createNode('output');
-const attribute = meshBasicBuilder.createNode('attribute');
-const complement = meshBasicBuilder.createNode('complement');
-const floatToVec3 = meshBasicBuilder.createNode('floatToVec3');
-output.setInput('color', floatToVec3);
-floatToVec3.setInput('x', complement);
-floatToVec3.setInput('y', complement);
-floatToVec3.setInput('z', complement);
-complement.setInput(0, attribute);
-attribute.p.name.set('occlusion');
-material.p.material.setNode(meshBasicBuilder);
+	// add occlusion
+	const occlusion = geo.createNode('occlusion');
+	occlusion.setInput(0, merge);
 
-// add a light
-scene.root().createNode('hemisphereLight');
+	// add material
+	const material = geo.createNode('material');
+	material.setInput(0, occlusion);
+	material.flags.display.set(true);
+	const MAT = scene.root().createNode('materialsNetwork');
+	const meshBasicBuilder = MAT.createNode('meshBasicBuilder');
+	const output = meshBasicBuilder.createNode('output');
+	const attribute = meshBasicBuilder.createNode('attribute');
+	const complement = meshBasicBuilder.createNode('complement');
+	const floatToVec3 = meshBasicBuilder.createNode('floatToVec3');
+	output.setInput('color', floatToVec3);
+	floatToVec3.setInput('x', complement);
+	floatToVec3.setInput('y', complement);
+	floatToVec3.setInput('z', complement);
+	complement.setInput(0, attribute);
+	attribute.p.name.set('occlusion');
+	material.p.material.setNode(meshBasicBuilder);
 
-// create a camera
-const perspectiveCamera1 = scene.root().createNode('perspectiveCamera');
-perspectiveCamera1.p.t.set([5, 5, 5]);
-// add orbit_controls
-const events1 = perspectiveCamera1.createNode('eventsNetwork');
-const orbitsControls = events1.createNode('cameraOrbitControls');
-perspectiveCamera1.p.controls.setNode(orbitsControls);
+	// add a light
+	scene.root().createNode('hemisphereLight');
 
-// create viewer
-perspectiveCamera1.createViewer(document.getElementById('app')!);
+	// create a camera
+	const perspectiveCamera1 = scene.root().createNode('perspectiveCamera');
+	perspectiveCamera1.p.t.set([5, 5, 5]);
+	// add orbit_controls
+	const events1 = perspectiveCamera1.createNode('eventsNetwork');
+	const orbitsControls = events1.createNode('cameraOrbitControls');
+	perspectiveCamera1.p.controls.setNode(orbitsControls);
+	scene.root().mainCameraController.setCameraPath(perspectiveCamera1.path());
 
-// make some nodes globals to access in html controls
-(window as any).sphere = sphere;
-(window as any).occlusion = occlusion;
+	scene.loadingController.markAsLoaded();
+
+	// create viewer
+	const element = document.getElementById('app');
+	if (!element) {
+		console.error('element not found');
+		return;
+	}
+	const viewer = await perspectiveCamera1.createViewer({element});
+	if (!viewer) {
+		console.error('viewer not created');
+		return;
+	}
+
+	// make some nodes globals to access in html controls
+	(window as any).sphere = sphere;
+	(window as any).occlusion = occlusion;
+}
+
+document.addEventListener('DOMContentLoaded', init);
+init();

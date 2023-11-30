@@ -1,10 +1,24 @@
-yarn-error.log
-node_modules/
-coverage
-config/esbuild/esbuild.js
-config/webpack/stats.json
-config/webpack/dts_concat.js
-config/webpack/debug_dev_config.json
-config/webpack/debug_prod_config.json
-public/dist
-dist/
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
