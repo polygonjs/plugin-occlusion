@@ -8,7 +8,8 @@ function PolygonjsPluginOcclusion(poly: PolyEngine) {
 	poly.registerOperation(OcclusionSopOperation);
 	poly.registerNode(OcclusionSopNode, CATEGORY_SOP.RENDER);
 }
-export const polyPluginOcclusion = new PolyPlugin('occlusion', PolygonjsPluginOcclusion, {
+const polyPluginOcclusion = new PolyPlugin('occlusion', PolygonjsPluginOcclusion, {
 	libraryName: '@polygonjs/plugin-occlusion',
 	libraryImportPath: '@polygonjs/plugin-occlusion/dist',
 });
+export {polyPluginOcclusion, OcclusionSopNode};
