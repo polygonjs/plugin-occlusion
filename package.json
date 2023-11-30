@@ -8,7 +8,7 @@
 	"files": [
 		"dist"
 	],
-	"main": "dist/index.js",
+	"main": "dist/index.es.js",
 	"description": "Occlusion plugin for the 3D engine https://polygonjs.com",
 	"repository": {
 		"url": "git@github.com:polygonjs/plugin-occlusion.git",
