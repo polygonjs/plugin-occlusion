@@ -31,7 +31,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@polygonjs/polygonjs": "^1.5.38",
+		"@polygonjs/polygonjs": "^1.5.45",
 		"geo-ambient-occlusion": "3.0.4"
 	},
 	"devDependencies": {
